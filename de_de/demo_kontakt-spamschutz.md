@@ -26,7 +26,15 @@ Siehe [YForm Formbuilder Values](yform_modul_values.md#captcha_calc)
 **Vorgehensweise**
 
 1. Feld vom Typ PHP anlegen: `php|validate_timer|Spamschutz|<?php echo '<input name="validate_timer" type="hidden" value="'.microtime(true).'" />' ?>|`
+
+PHP-Schreibweise:
+`$yform->setValueField('php', ["validate_timer","Spamschutz","<?php echo '<input name=\"validate_timer\" type=\"hidden\" value=\"'.microtime(true).'\" />';?>"]);`
+
 2. Validierung vom Typ custom_function anlegen: `validate|customfunction|validate_timer|yform_validate_timer|5|Spambots haben keine Chance|`
+
+PHP-Schreibweise:
+`$yform->setValidateField('customfunction', ['validate_timer','yform_validate_timer','5',"Spambots haben keine Chance"]);`
+
 3. Nachfolgende Funktion hinterlegen, die via `custom_function` aufgerufen wird.
 
 ```
